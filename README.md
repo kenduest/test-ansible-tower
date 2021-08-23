@@ -1,2 +1,1 @@
-# ansible-tower-samples
-Ansible Tower Playbook Samples
+# ansible-tower-script

@@ -1,0 +1,11 @@
+- name: get local user 
+  hosts: all 
+
+  tasks:
+  - name: run command
+    register: command_output
+    raw: Get-LocalUser | Format-List 
+
+  - name: display
+    debug:
+        msg: "{{command_output.stdout_lines}}"

@@ -1,0 +1,12 @@
+- name: save local user to file
+  hosts: all 
+
+  tasks:
+  - name: save user summary list
+    register: command_output1
+    raw: Get-LocalUser > "{{ destdir_var | default(destdir_var, 'c:/report')}}/local-user-summary.txt"
+
+  - name: save user detail list
+    register: command_output2
+    raw: Get-LocalUser | Format-List > "{{ destdir_var | default(destdir_var, 'c:/report')}}/local-user-detail.txt"
+

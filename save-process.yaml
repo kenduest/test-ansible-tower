@@ -1,0 +1,12 @@
+- name: save local user to file
+  hosts: all 
+
+  tasks:
+  - name: save all process list 
+    register: command_output1
+    raw: Get-Process > "{{ destdir_var | default(destdir_var, 'c:/report')}}/process-summary.txt"
+
+  - name: save all process detail list 
+    register: command_output2
+    raw: Get-Process | Format-List * > "{{ destdir_var | default(destdir_var, 'c:/report')}}/process-detail.txt"
+

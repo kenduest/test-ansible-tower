@@ -1,0 +1,18 @@
+- name: save local user to file and post to server
+  hosts: all 
+
+  tasks:
+  - name: save user detail list file
+    register: command_output2
+    raw: Get-LocalUser | Format-List > "c:/Report/local-user-detail.txt"
+
+  - name: read result
+    slurp:
+     src: "c:/Report/local-user-detail.txt" 
+    register: slurp_file
+
+  - name: http post with data 
+    win_uri:
+      url: http://192.168.1.251:10000/
+      method: POST
+      body: "{{ slurp_file['content'] | b64decode }}"

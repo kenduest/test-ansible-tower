@@ -1,0 +1,8 @@
+- name: get netstat result 
+  hosts: all 
+
+  tasks:
+  - name: run command
+    register: command_output
+    raw: netstat -an > c:/report/network-status.txt
+  - debug: var=command_output

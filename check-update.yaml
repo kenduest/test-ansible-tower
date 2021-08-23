@@ -1,0 +1,11 @@
+- name: check update 
+  hosts: all 
+
+  tasks:
+  - name: get available security update list
+    win_updates:
+      category_names: SecurityUpdates
+      state: searched
+      log_path: C:/report/check-update-result.txt
+
+

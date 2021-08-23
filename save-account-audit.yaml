@@ -1,0 +1,8 @@
+- name: save user audit record
+  hosts: all 
+
+  tasks:
+  - name: retrieve user faillog items 
+    register: command_output1
+    raw: Get-EventLog Security 4625 | Format-List > "{{ destdir_var | default(destdir_var, 'c:/report')}}/user-audit-faillogin.txt"
+

@@ -1,0 +1,15 @@
+- name: create user 
+  hosts: all 
+
+  tasks:
+  - name: create testuser1 account 
+    register: command_output
+    win_user:
+      name: testuser1 
+      password: SJHJKDHWWRWRW124232!
+      description: test user1
+      account_disabled: false 
+      state: present
+      groups:
+        - Users
+
