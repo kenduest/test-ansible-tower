@@ -1,0 +1,17 @@
+- name: Hello World Samplex
+  hosts: all
+
+  tasks:
+  - name: copy to remote 
+    win_copy:
+      src: files/example1.ps1
+      dest: c:/report/example1.ps1
+      force: yes
+  
+  - name: run local script
+    win_shell:
+      c:\report\example1.ps1
+    args:
+      chdir: C:\report
+       
+    

@@ -1,0 +1,3 @@
+
+Get-Localuser > test.txt
+
