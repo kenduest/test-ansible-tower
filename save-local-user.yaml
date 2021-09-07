@@ -6,7 +6,11 @@
     register: command_output1
     raw: Get-LocalUser > "{{ destdir_var | default(destdir_var, 'c:/report')}}/local-user-summary.txt"
 
-  - name: save user detail list
+  - name: save user cvs output
     register: command_output2
+    raw: Get-LocalUser | Select Name, FullName, Enabled, PasswordChangeableDate, PasswordExpires, PasswordLastSet, LastLogon | Export-csv "{{ destdir_var | default(destdir_var, 'c:/report')}}/local-user-csv.txt" -notypeinformation
+
+  - name: save user detail list
+    register: command_output3
     raw: Get-LocalUser | Format-List > "{{ destdir_var | default(destdir_var, 'c:/report')}}/local-user-detail.txt"
 

@@ -3,7 +3,7 @@
 
 [all:vars]
 ansible_user=administrator
-ansible_password=password
+ansible_password=qwer1234QWER1234!
 ansible_connection=winrm
 ansible_winrm_server_cert_validation=ignore
 destdir_var=c:/report
